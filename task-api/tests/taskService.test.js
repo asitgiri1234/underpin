@@ -128,9 +128,8 @@ describe('getPaginated', () => {
     expect(getPaginated(99, 10)).toEqual([]);
   });
 
-  it('does not return a tail slice for page=0', () => {
-    const page = getPaginated(0, 10);
-    expect(page[0].title).toBe('task-0');
+  it('returns [] for page=0 since pages are 1-based', () => {
+    expect(getPaginated(0, 10)).toEqual([]);
   });
 
   it('does not read backwards for a negative page', () => {
