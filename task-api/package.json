@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Task Manager API",
   "main": "src/app.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node src/app.js",
     "test": "jest",
