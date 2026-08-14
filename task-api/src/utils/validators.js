@@ -33,4 +33,18 @@ const validateUpdateTask = (body) => {
   return null;
 };
 
-module.exports = { validateCreateTask, validateUpdateTask };
+const validateAssignee = (body) => {
+  if (!('assignee' in body)) {
+    return 'assignee is required';
+  }
+  // An explicit null unassigns the task; every other non-string is rejected.
+  if (body.assignee === null) {
+    return null;
+  }
+  if (typeof body.assignee !== 'string' || body.assignee.trim() === '') {
+    return 'assignee must be a non-empty string';
+  }
+  return null;
+};
+
+module.exports = { validateCreateTask, validateUpdateTask, validateAssignee };
