@@ -4,7 +4,7 @@
 
 I understand this app as a simple Task Manager API where tasks are stored in an array. The main problem is that the service does not properly protect or validate the data.
 
-Most of the 9 bugs come from one root cause: the service trusts incoming data and hands out direct references to its stored objects. Three do not fit that pattern — the status filter uses the wrong comparison operator, completeTask contains a stray hardcoded line, and the error handler sits in a different layer (app.js) entirely.
+The largest group of the 9 bugs shares one root cause: the service trusts incoming data and hands out direct references to its stored objects. That covers four of them — reading tasks hands back the stored objects themselves, and create, id and createdAt all let unchecked input straight into the store. The other five do not fit that pattern — the status filter uses the wrong comparison operator, the overdue check compares a date with no time against an exact moment, update never records completedAt when a task becomes done, completeTask contains a stray hardcoded line, and the error handler sits in a different layer (app.js) entirely.
 
 Because of this:
 - Reading can accidentally change tasks.

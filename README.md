@@ -4,8 +4,6 @@ An Express + in-memory task API, with a Jest/Supertest suite covering the servic
 
 Original brief: **[ASSIGNMENT.md](./ASSIGNMENT.md)**
 
-**Live URL:** _TBD_
-
 ---
 
 ## Setup
